@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeatherForecastRestAPI.Model;
 using WeatherForecastRestAPI.Repository;
+using WeatherForecastRestAPI.Services;
 
 namespace WeatherForecastRestAPI.Controllers;
 
@@ -13,7 +14,11 @@ public class MainController : ControllerBase
     public MainController(BaseRepository<WeatherRecord> weatherRecords) => _weatherRecords = weatherRecords;
     
     [HttpGet]
-    public JsonResult Get() => new(_weatherRecords.GetAll());
+    public JsonResult Get()
+    {
+        WeatherFetcher.UpdateExistingRecords(_weatherRecords);
+        return new(_weatherRecords.GetAll());
+    }
     
     [HttpPost]
     public JsonResult Post(WeatherRecord weatherRecord)

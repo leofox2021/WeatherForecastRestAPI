@@ -23,7 +23,7 @@ public class BaseRepository<TModel> : IRepository<TModel> where TModel : BaseMod
 
     public TModel Update(TModel model)
     {
-        var modelToUpdate = _context.Set<TModel>().FirstOrDefault(m => m.Id == model.Id);
+        var modelToUpdate = _context.Set<TModel>().FirstOrDefault(n => n.Id == model.Id);
         
         if (modelToUpdate != null)
             modelToUpdate = model;

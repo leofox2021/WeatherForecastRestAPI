@@ -12,11 +12,8 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
         <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
         <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="4.2.2" />
+        <PackageReference Include="OpenMeteo.dotnet" Version="0.2.8" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services\" />
     </ItemGroup>
 
     <ItemGroup>

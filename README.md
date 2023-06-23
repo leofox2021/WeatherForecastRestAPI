@@ -2,4 +2,10 @@
 ASP.NET Web API for a future avalonia cross-platform weather forecast app. 
 
 ---
-The API uses EntityFrameworkCore for SQlite interactions.
+Libraries and technologies used in this API: 
+- SQLite Database
+- EntityFrameworkCore.SQLite
+- OpenMeteo.dotnet (https://github.com/AlienDwarf/open-meteo-dotnet)
+
+---
+Requires <u>at least</u> .Net 7.x to work. 
