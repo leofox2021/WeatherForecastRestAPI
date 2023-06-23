@@ -1,0 +1,1 @@
+g++ -o linecounter.exe .\linecounter.cpp
