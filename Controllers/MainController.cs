@@ -37,14 +37,12 @@ public class MainController : ControllerBase
     [HttpPut]
     public JsonResult Put(WeatherRecord weatherRecord)
     {
-        var targetRecord = _weatherRecords.Get(weatherRecord.Id);
+        if (_weatherRecords.Get(weatherRecord.Id) == null)
+            return new("Put was not successful. The entity does not exist.");
         
         try
         {
-            if (targetRecord == null) 
-                return new("Put was not successful. The entity does not exist.");
-            
-            targetRecord = _weatherRecords.Update(targetRecord);
+            var targetRecord = _weatherRecords.Update(_weatherRecords.Get(weatherRecord.Id));
             return new($"Put successful {targetRecord.Id}");
 
         }
@@ -57,14 +55,12 @@ public class MainController : ControllerBase
     [HttpDelete]
     public JsonResult Delete(Guid id)
     {
-        var targetRecord = _weatherRecords.Get(id);
+        if (_weatherRecords.Get(id) == null)
+            return new("Delete was not successful. Entity does not exist.");
 
         try
         {
-            if (targetRecord == null)
-                return new("Delete was not successful. Entity does not exist.");
-            
-            _weatherRecords.Delete(targetRecord.Id);
+            _weatherRecords.Delete(_weatherRecords.Get(id).Id);
             return new("Delete successful.");
         }
         catch (Exception exception)
