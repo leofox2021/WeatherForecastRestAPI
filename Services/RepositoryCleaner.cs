@@ -1,7 +1,8 @@
 ﻿using WeatherForecastRestAPI.Database;
 using WeatherForecastRestAPI.Model;
+using WeatherForecastRestAPI.Repository;
 
-namespace WeatherForecastRestAPI.Repository;
+namespace WeatherForecastRestAPI.Services;
 
 public static class RepositoryCleaner
 {
