@@ -17,6 +17,7 @@ public class MainController : ControllerBase
     public JsonResult Get()
     {
         WeatherFetcher.UpdateExistingRecords(_weatherRecords);
+        RepositoryCleaner.Clean(_weatherRecords);
         return new(_weatherRecords.GetAll());
     }
     

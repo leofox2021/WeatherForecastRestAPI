@@ -1,4 +1,5 @@
-﻿using WeatherForecastRestAPI.Model;
+﻿using WeatherForecastRestAPI.Database;
+using WeatherForecastRestAPI.Model;
 using WeatherForecastRestAPI.Repository;
 
 namespace WeatherForecastRestAPI.Services;
@@ -20,7 +21,7 @@ public static class WeatherFetcher
         var openMeteoClient = new OpenMeteo.OpenMeteoClient();
         var weatherData = openMeteoClient.Query(weatherRecord.City);
 
-        weatherRecord.City = weatherData == null ? "City does not exist." : weatherRecord.City;
+        weatherRecord.City = weatherData == null ? StringConstants.CityNotExist : weatherRecord.City;
         
         weatherRecord.DegreesCelsius = weatherData == null ? 0 : (int)weatherData.CurrentWeather?.Temperature;
         

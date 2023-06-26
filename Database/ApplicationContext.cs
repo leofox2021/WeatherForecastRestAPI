@@ -11,5 +11,5 @@ public class ApplicationContext : DbContext
         Database.EnsureCreated();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
-        optionsBuilder.UseSqlite("Filename=database.db");
+        optionsBuilder.UseSqlite($"Filename={StringConstants.DbPath}");
 }
