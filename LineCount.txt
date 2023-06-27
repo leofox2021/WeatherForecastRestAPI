@@ -1,8 +1,8 @@
 Just a total amount of code lines in the project to see how cool I am :)
 
-Files: 14
-Line count: 443
-Parsed on: Mon Jun 26 04:39:30 2023
+Files: 16
+Line count: 580
+Parsed on: Tue Jun 27 03:48:43 2023
 
 Bulild command on windows: g++ -o linecounter.exe linecounter.cpp
 Bulild command on linux: g++ -o linecounter linecounter.cpp

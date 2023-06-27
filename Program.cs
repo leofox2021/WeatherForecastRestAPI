@@ -19,6 +19,7 @@ builder.Services.AddMvc();
 builder.Services.AddDbContext<ApplicationContext>(n => n.UseSqlite(connectionString));
 
 builder.Services.AddTransient<BaseRepository<WeatherRecord>>();
+builder.Services.AddTransient<BaseRepository<ExtendedWeatherRecord>>();
 
 // Add services to the container.
 var app = builder.Build();

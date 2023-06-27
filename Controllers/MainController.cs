@@ -9,7 +9,7 @@ namespace WeatherForecastRestAPI.Controllers;
 [Route("[controller]")]
 public class MainController : ControllerBase
 {
-    private BaseRepository<WeatherRecord> _weatherRecords;
+    private readonly BaseRepository<WeatherRecord> _weatherRecords;
     
     public MainController(BaseRepository<WeatherRecord> weatherRecords) => _weatherRecords = weatherRecords;
     

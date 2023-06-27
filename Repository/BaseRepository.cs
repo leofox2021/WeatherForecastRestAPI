@@ -29,7 +29,7 @@ public class BaseRepository<TModel> : IRepository<TModel> where TModel : BaseMod
             modelToUpdate = model;
         
         _context.Update(modelToUpdate);
-        _context.SaveChanges();
+        _context.SaveChanges(); 
         
         return modelToUpdate;
     }
