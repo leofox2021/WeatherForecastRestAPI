@@ -13,4 +13,11 @@ public class ExtendedWeatherRecord : BaseModel
     public float Elevation { get; set; }
     public int Population { get; set; }
     public string? CountryCode { get; set; }
+    public float RainSum { get; set; }
+    public float Precipitation { get; set; }
+    public float Showers { get; set; }
+    public float Snowfall { get; set; }
+    public string? Sunset { get; set; }
+    public string? Sunrise { get; set; }
+    public float WindDirection { get; set; }
 }
