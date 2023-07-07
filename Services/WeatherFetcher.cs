@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using OpenMeteo;
+﻿using OpenMeteo;
 using WeatherForecastRestAPI.Database;
 using WeatherForecastRestAPI.Model;
 using WeatherForecastRestAPI.Repository;
@@ -44,7 +43,6 @@ public static class WeatherFetcher
     private static void FetchOne(ExtendedWeatherRecord extendedWeatherRecord)
     {
         string notAvaliableMessage = "not available for the current city";
-
         
         var cityData = GetCityData(extendedWeatherRecord.City);
         var weatherData = GetExtendedWeatherQuery(extendedWeatherRecord.City, cityData?.Timezone);
@@ -68,8 +66,8 @@ public static class WeatherFetcher
         extendedWeatherRecord.Precipitation = dailyNull ? 0 : weatherData.Daily.Precipitation_sum[0];
         extendedWeatherRecord.Showers = dailyNull ? 0 : weatherData.Daily.Showers_sum[0];
         extendedWeatherRecord.Snowfall = dailyNull ? 0 : weatherData.Daily.Snowfall_sum[0];
-        extendedWeatherRecord.Sunset = dailyNull ? notAvaliableMessage : weatherData.Daily.Sunset[0];
-        extendedWeatherRecord.Sunrise = dailyNull ? notAvaliableMessage : weatherData.Daily.Sunrise[0];
+        extendedWeatherRecord.Sunset = dailyNull ? notAvaliableMessage : weatherData.Daily.Sunset[0].Split('T')[1];
+        extendedWeatherRecord.Sunrise = dailyNull ? notAvaliableMessage : weatherData.Daily.Sunrise[0].Split('T')[1];
         extendedWeatherRecord.WindDirection = dailyNull ? 0 : weatherData.Daily.Winddirection_10m_dominant[0];
     }
 
@@ -100,5 +98,5 @@ public static class WeatherFetcher
         return Client.Query(city, weatherForecastOptions);
     }
     
-    private static int GetDegreesFahrenheit(float? degreesCelsius) => Convert.ToInt32(degreesCelsius * 9 / 5 + 32);
+    private static int GetDegreesFahrenheit(float? degreesCelsius) => Convert.ToInt32(degreesCelsius * 1.8f + 32);
 }
