@@ -5,7 +5,6 @@ namespace WeatherForecastRestAPI.Database;
 
 public class ApplicationContext : DbContext
 {
-    public DbSet<WeatherRecord> WeatherRecords { get; set; }
     public DbSet<ExtendedWeatherRecord> ExtendedWeatherRecords { get; set; }  
  
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base (options) => Database.EnsureCreated();

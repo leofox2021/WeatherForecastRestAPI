@@ -8,17 +8,7 @@ namespace WeatherForecastRestAPI.Services;
 public static class WeatherFetcher
 {
     private static readonly OpenMeteoClient Client = new();
-    
-    public static void UpdateExistingRecords(BaseRepository<WeatherRecord> repository) 
-    {
-        for (int i = 0; i < repository.GetAll().Count; i++)
-        {
-            var targetWeatherRecord = repository.GetAll()[i];
-            FetchOne(targetWeatherRecord);
-            repository.Update(targetWeatherRecord);
-        }
-    }
-    
+
     public static void UpdateExistingRecords(BaseRepository<ExtendedWeatherRecord> repository) 
     {
         for (int i = 0; i < repository.GetAll().Count; i++)
@@ -28,18 +18,7 @@ public static class WeatherFetcher
             repository.Update(targetWeatherRecord);
         }
     }
-    
-    private static void FetchOne(WeatherRecord weatherRecord)
-    {
-        var weatherData = GetWeatherQuery(weatherRecord.City);
 
-        weatherRecord.City = weatherData == null ? StringConstants.CityNotExist : weatherRecord.City;
-        weatherRecord.DegreesCelsius = weatherData == null ? 0 : (int)weatherData.CurrentWeather?.Temperature;
-        weatherRecord.DegreesFahrenheit = weatherData == null ? 0 
-            : GetDegreesFahrenheit(weatherData.CurrentWeather?.Temperature);
-        weatherRecord.WindSpeed = weatherData == null ? 0 : (int)weatherData.CurrentWeather?.Windspeed; 
-    }
-    
     private static void FetchOne(ExtendedWeatherRecord extendedWeatherRecord)
     {
         string notAvaliableMessage = "not available for the current city";
