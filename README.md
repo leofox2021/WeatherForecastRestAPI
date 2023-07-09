@@ -9,3 +9,9 @@ Libraries and technologies used in this API:
 
 ---
 Requires <u>at least</u> .Net 7.x to work. 
+
+---
+Run command with .NET CLI: 
+````
+dotnet run NETCORE_URLS=http://localhost:5143 ASPNETCORE_ENVIRONMENT=Development
+````
